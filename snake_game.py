@@ -27,24 +27,31 @@ print('col:', col, 'row', row)
 
 def addDots(head, body):
     new_body = body.replace('\n', '')
-    print('head argument in addDots:', head)
+    # print('head argument in addDots:', head)
     out = ''
     for j in range(len(new_body)):
-        print('j:', j)
-        print('val:', new_body[j])
         next_index = min(18, j + 1)
         prev_index = max(0, j - 1)
         if (j == max(0, head - 5)):
-            out += '.....:O'
+            for k in range(6):
+                if (k != 6):
+                    out += '.'
+                else:
+                    out += ':O'
+                if (j + k % 6 == 0 and j + k != 0):
+                    out += '\n'
+                
         elif (new_body[j] == ' '):
             out += ' '
-        elif (new_body[j] == '.' and next_index != '.' and prev_index != '.'):
+        elif (body[j] == '.'):
             out += '.'
-        if (j % 6 == 0 and j != 0 and j != 18):
+        if (j % 6 == 0 and j != 0 and j != 18 and j != max(0, head - 5)):
             out += '\n'
     return out
 
-print('addDots:\n', addDots(head, original))
+print('addDots:')
+print('123456')
+print(addDots(head, original))
 
 body = ''
 
